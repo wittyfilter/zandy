@@ -18,7 +18,7 @@ repositories {
     maven { url 'http://download.crashlytics.com/maven' }
 }
 
-apply plugin: 'android'
+apply plugin: 'com.android.application'
 apply plugin: 'crashlytics'
 
 dependencies {
@@ -34,18 +34,20 @@ dependencies {
 
 
 android {
-    compileSdkVersion 20
-    buildToolsVersion "20.0.0"
+    compileSdkVersion 21
+    buildToolsVersion "21.0.0"
 
     defaultConfig {
+        minSdkVersion 10
+        targetSdkVersion 20
         versionCode 1440
         versionName "1.4.4"
     }
 
-    productFlavors {
-        amazon
-        google
-    }
+//   productFlavors {
+//        amazon
+//        google
+//    }
 
     signingConfigs {
         release {
@@ -129,5 +131,5 @@ gradle.taskGraph.whenReady { taskGraph ->
 } // end whenRead
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.12'
+    gradleVersion = '2.2'
 }
